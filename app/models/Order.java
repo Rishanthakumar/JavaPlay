@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import enumeration.OrderStatus;
 
 import javax.persistence.*;
@@ -17,6 +18,12 @@ public class Order extends BaseModel {
     private Timestamp orderDate;
 
     private OrderStatus status;
+
+    @OneToMany(mappedBy = "order") @JsonBackReference
+    private List<Item> items = new ArrayList<>();
+
+    @ManyToOne
+    private Batch batch;
 
     @ManyToOne
     private Customer customer;
@@ -44,12 +51,6 @@ public class Order extends BaseModel {
     public void setBatch(Batch batch) {
         this.batch = batch;
     }
-
-    @OneToMany(mappedBy = "order")
-    private List<Item> items = new ArrayList<>();
-
-    @ManyToOne
-    private Batch batch;
 
     public Long getId() {
         return id;

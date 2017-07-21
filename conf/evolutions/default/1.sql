@@ -52,8 +52,8 @@ create table items_order (
   id                        bigint auto_increment not null,
   order_date                datetime(6),
   status                    integer,
-  customer_id               bigint,
   batch_id                  bigint,
+  customer_id               bigint,
   created_at                datetime(6) not null,
   updated_at                datetime(6) not null,
   constraint ck_items_order_status check (status in (0,1,2,3,4)),
@@ -66,10 +66,10 @@ alter table customer add constraint fk_customer_shippingAddress_2 foreign key (s
 create index ix_customer_shippingAddress_2 on customer (shipping_address_id);
 alter table item add constraint fk_item_order_3 foreign key (order_id) references items_order (id) on delete restrict on update restrict;
 create index ix_item_order_3 on item (order_id);
-alter table items_order add constraint fk_items_order_customer_4 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
-create index ix_items_order_customer_4 on items_order (customer_id);
-alter table items_order add constraint fk_items_order_batch_5 foreign key (batch_id) references batch (id) on delete restrict on update restrict;
-create index ix_items_order_batch_5 on items_order (batch_id);
+alter table items_order add constraint fk_items_order_batch_4 foreign key (batch_id) references batch (id) on delete restrict on update restrict;
+create index ix_items_order_batch_4 on items_order (batch_id);
+alter table items_order add constraint fk_items_order_customer_5 foreign key (customer_id) references customer (id) on delete restrict on update restrict;
+create index ix_items_order_customer_5 on items_order (customer_id);
 
 
 

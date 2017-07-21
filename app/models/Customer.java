@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ public class Customer extends BaseModel {
     @ManyToOne(cascade = CascadeType.ALL)
     private Address shippingAddress;
 
-    @OneToMany(mappedBy = "customer_map")
+    @OneToMany(mappedBy = "customer") @JsonBackReference
     private List<Order> orders = new ArrayList<>();
 
     public String getName() {
