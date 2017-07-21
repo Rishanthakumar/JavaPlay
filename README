@@ -1,0 +1,22 @@
+This is your new Play application
+=================================
+
+Use following command to run `sbt run`
+
+This file will be packaged with your application when using `sbt dist`.
+
+Controllers
+===========
+
+- ServiceController.java:
+
+  All the CRUD apis for KohlsAssets are handled here.
+
+
+Mysql Database
+==============
+
+Create a database `packing_robot`
+
+Create a user `packingrobot` and grant permission and update the password
+in the application conf.
